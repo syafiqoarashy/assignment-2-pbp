@@ -1,5 +1,6 @@
 ## Link to Heroku App
 
+Heroku App: https://assignment-2-pbp.herokuapp.com/
 Catalog Page: https://assignment-2-pbp.herokuapp.com/katalog/
 
 ## MVT Diagram and How Its All Interlinked
@@ -15,3 +16,4 @@ While it is not required, it is recommended to create and execute a Django appli
 ## Implementation
 
 Step 1: Create a function on views.py
+<img width="383" alt="Screen Shot 2022-09-15 at 6 33 50 AM" src="https://user-images.githubusercontent.com/101589777/190280746-d6f893fa-7970-4c3c-9662-8b189652b588.png">
