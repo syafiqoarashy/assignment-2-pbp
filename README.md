@@ -20,8 +20,11 @@ While it is not required, it is recommended to create and execute a Django appli
 ## Implementation
 
 Step 1: Create a function on views.py
+
 <img width="383" alt="Screen Shot 2022-09-15 at 6 33 50 AM" src="https://user-images.githubusercontent.com/101589777/190280746-d6f893fa-7970-4c3c-9662-8b189652b588.png">
+
 First, In the beginning of the file we imported the CatalogItem class from models.py. This class will be used to retrieve data from the database. Next, we create a function on views.py that is capable of querying into models and returning the date into the HTML file. This function accepts request as its parameter, request in this context are HttpRequest from the user's browser. This function will then retrieve all the data from CatalogItem, then put into the variable context as a dictionary with key-value pair. Lastly, it will return a the render with parameter request, the html file, and the context variable to map data to the html file.
 
 Step 2: Create a routing in urls.py
+
 <img width="323" alt="Screen Shot 2022-09-15 at 6 51 15 AM" src="https://user-images.githubusercontent.com/101589777/190282365-dec7787e-0c9b-4a21-8823-ffcefc01e2b7.png">
