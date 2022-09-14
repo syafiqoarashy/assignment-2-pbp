@@ -4,7 +4,7 @@ Heroku App: https://assignment-2-pbp.herokuapp.com/
 
 Catalog Page: https://assignment-2-pbp.herokuapp.com/katalog/
 
-## MVT Diagram and How Its All Interlinked
+## _MVT Diagram_ and How Its All Interlinked
 
 The diagram above containts the client request to the django web application and its response. It is also called the workflow of an MVT(Model-View-Template) diagram. 
 
@@ -14,7 +14,7 @@ The diagram above containts the client request to the django web application and
 4. Next, if the request requires any process that includes databases, views.py will query/fetch necessary data from models.py for the particular request, which then the result will be return to views.py. 
 5. Lastly, views.py will render the HTML file which is defined in the template and show data acquired. This then will be returned to the user as a response.
 
-## Why We Use Virtual Environments?
+## Why We Use _Virtual Environments_?
 
 While it is not required, it is recommended to create and execute a Django application in a separate enviroment(virtual enviroment). Python has a tool called virtualenv that creates an isolated Python environment, we will  be use it to create our virtual environment for our Django application. This isolated environment isolates the package and dependencies specifically from our application. This is to deter the possibility of other versions of packages or dependencies in our computer conflicting with the ones from our application by avoiding installing Python packages globally. Therefore, the virtual envorinment is used to manage Python packages for different projects.
 
@@ -29,3 +29,4 @@ First, In the beginning of the file we imported the CatalogItem class from model
 Step 2: Create a routing in urls.py
 
 <img width="323" alt="Screen Shot 2022-09-15 at 6 51 15 AM" src="https://user-images.githubusercontent.com/101589777/190282365-dec7787e-0c9b-4a21-8823-ffcefc01e2b7.png">
+
