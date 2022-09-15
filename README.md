@@ -16,7 +16,7 @@ The diagram above containts the client request to the django web application and
 
 ## Why We Use _Virtual Environments_?
 
-While it is not required, it is recommended to create and execute a Django application in a separate enviroment(virtual enviroment). Python has a tool called virtualenv that creates an isolated Python environment, we will  be use it to create our virtual environment for our Django application. This isolated environment isolates the package and dependencies specifically from our application. This is to deter the possibility of other versions of packages or dependencies in our computer conflicting with the ones from our application by avoiding installing Python packages globally. Therefore, the virtual envorinment is used to manage Python packages for different projects.
+While it is not required, it is recommended to create and execute a Django application in a separate environment(virtual environment). Python has a tool called virtualenv that creates an isolated Python environment, we will  be use it to create our virtual environment for our Django application. This isolated environment isolates the package and dependencies specifically from our application. This is to deter the possibility of other versions of packages or dependencies in our computer conflicting with the ones from our application by avoiding installing Python packages globally. Therefore, the virtual envorinment is used to manage Python packages for different projects.
 
 ## Implementation
 
@@ -40,3 +40,4 @@ To map the data, first we open the HTML file we created in our templates folder.
 
 Step 4: Heroku Deployment
 
+To deploy to Heroku, firstly we create a file called _Procfile_ that will be used by Heroku to read the log activity of our application. Since, the _Procfile_ file has already been provided in our template, we will be using that. Afterwards, we have to create a file named 'dpl.yml', this is used by GitHub Actions to carry out the deployment by runner. A few configurations must also be added to our _settings.py_ file but it is also already done by the template. Futhermore, fetch your Heroku API Key and application name. Open the secrets 
