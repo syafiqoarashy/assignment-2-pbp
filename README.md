@@ -34,4 +34,9 @@ In step two, we need to create a routing that maps the function from _views.py_.
 
 Step 3: Mapping the Data
 
+<img width="466" alt="Screen Shot 2022-09-15 at 7 04 19 AM" src="https://user-images.githubusercontent.com/101589777/190283529-06f37796-9e2f-4513-8420-6479ce27d369.png">
+
+To map the data, first we open the HTML file we created in our templates folder. Create a loop in our table that iterates over _list_item_ as our container from the context variable. Then, change the content of the HTML file accordingly to call the specific variable/attribute name of the object in the container to call the data. In this, we use Django's template syntax to map the data that has been rendered and display it on the HTML page.
+
+Step 4: Heroku Deployment
 
