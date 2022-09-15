@@ -12,8 +12,8 @@ The diagram above containts the client request to the django web application and
 
 1. Firstly, a user will send a request to the server through a browser. 
 2. Then, Django will receive the request and will be put through _urls.py_, _urls.py_ contains the URLS a user will request for. 
-3. After being processed through _urls.py_ it is then forwarded into views.py for the corresponding response/functions to the proccesed request, a view fetches data from models and renders a template. 
-4. Next, if the request requires any process that includes databases, views.py will query/fetch necessary data from models.py for the particular request, which then the result will be return to _views.py_. 
+3. After being processed through _urls.py_ it is then forwarded into _views.py_ for the corresponding response/functions to the proccesed request, a view fetches data from models and renders a template. 
+4. Next, if the request requires any process that includes databases, _views.py_ will query/fetch necessary data from _models.py_ for the particular request, which then the result will be return to _views.py_. 
 5. Lastly, _views.py_ will render the HTML file which is defined in the template and show data acquired. This then will be returned to the user as a response.
 
 ## Why We Use _Virtual Environments_?
