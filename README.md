@@ -6,7 +6,7 @@ Catalog Page: https://assignment-2-pbp.herokuapp.com/katalog/
 
 ## _MVT Diagram_ and How Its All Interlinked
 
-![diagram](https://user-images.githubusercontent.com/101589777/190297104-043859f9-a40c-4476-b3e4-fb5e93a20c3e.png)
+![diagram](https://user-images.githubusercontent.com/101589777/190297274-eab2da6e-f7f9-4680-a126-6e210b5ae3f2.png)
 
 The diagram above containts the client request to the django web application and its response. It is also called the workflow of an MVT(Model-View-Template) diagram. 
 
