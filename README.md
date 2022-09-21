@@ -53,3 +53,11 @@ To deploy to Heroku, firstly we create a file called _Procfile_ that will be use
 ###### HTML Variant
 
 ![image](https://user-images.githubusercontent.com/101589777/191459488-8eadcf14-ee5c-4ca9-9f46-2f0ea14cb7e1.png)
+
+###### XML Variant
+
+<img width="1435" alt="Screen Shot 2022-09-21 at 3 52 01 PM" src="https://user-images.githubusercontent.com/101589777/191460338-4b09926c-3c9e-493b-bd79-85a6c9e61d12.png">
+
+###### JSON Variant
+
+<img width="1435" alt="Screen Shot 2022-09-21 at 3 53 13 PM" src="https://user-images.githubusercontent.com/101589777/191460585-be7dcf55-f87e-4681-a889-021c898b3916.png">
