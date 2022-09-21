@@ -47,3 +47,9 @@ Step 4: Heroku Deployment
 To deploy to Heroku, firstly we create a file called _Procfile_ that will be used by Heroku to read the log activity of our application. Since, the _Procfile_ file has already been provided in our template, we will be using that. Afterwards, we have to create a file named _dpl.yml_, this is used by GitHub Actions to carry out the deployment by runner. A few configurations must also be added to our _settings.py_ file but it is also already done by the template. Futhermore, fetch your Heroku API Key and application name. In our GitHub repository, open the Secrets section and add a new repository secret variable for our deployment. These variable will be called HEROKU_API_KEY that contains the API Key and HEROKU_APP_NAME that contains the application name. After storing those variables, don't forget to open re-run the failed workflow. Now, the application is now accessible throuth the link.
 
 # ASSIGNMENT 3
+
+## Screenshots from Postman
+
+###### HTML Variant
+
+![image](https://user-images.githubusercontent.com/101589777/191459488-8eadcf14-ee5c-4ca9-9f46-2f0ea14cb7e1.png)
