@@ -48,6 +48,12 @@ To deploy to Heroku, firstly we create a file called _Procfile_ that will be use
 
 # ASSIGNMENT 3
 
+## Difference betweeen HTML, XML, and JSON
+
+#### Each Definition
+
+###### HTML
+
 ## Screenshots from Postman
 
 ###### HTML Variant
