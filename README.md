@@ -58,13 +58,17 @@ HTML (Hyper Text Markup Language) is a markup language that is used as the most 
 
 ###### XML
 
-XML (eXtensible Markup Language) is also a markup language, but XML is used to store data. A simple text-based format for representing structured information: documents, data, configuration, books, transactions, invoices, and much more.
+XML (eXtensible Markup Language) is also a markup language, but XML is used to store data and no predefined tags. A simple text-based format for representing structured information: documents, data, configuration, books, transactions, invoices, and much more.
 
 ###### JSON
 
 JSON (JavaScript Object Notation) is a lightweight format used to store and transport data, a simple data interchange format. It is based on the JavaScript programming language and easy to understand and generate.
 
 #### Differences
+
+| HTML | XML | JSON |
+| --- | --- | --- |
+| a | b | c |
 
 ## Screenshots from Postman
 
