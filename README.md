@@ -54,6 +54,18 @@ To deploy to Heroku, firstly we create a file called _Procfile_ that will be use
 
 ###### HTML
 
+HTML (Hyper Text Markup Language) is a markup language that is used as the most basic building block of the Web. It's a set of markup symbols or codes used to display on the Internet. It defines the meaning and structure of web content.
+
+###### XML
+
+XML (eXtensible Markup Language) is also a markup language, but XML is used to store data. A simple text-based format for representing structured information: documents, data, configuration, books, transactions, invoices, and much more.
+
+###### JSON
+
+JSON (JavaScript Object Notation) is a lightweight format used to store and transport data, a simple data interchange format. It is based on the JavaScript programming language and easy to understand and generate.
+
+#### Differences
+
 ## Screenshots from Postman
 
 ###### HTML Variant
