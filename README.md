@@ -66,9 +66,11 @@ JSON (JavaScript Object Notation) is a lightweight format used to store and tran
 
 #### Differences
 
+HTML is the outlier with the differences while XML and JSON is much more similar in use. HTML is more used to structure and design where things are supposed to be placed on a page. Just like their definitions both XML and JSON are used as data transfer and storage formats. Now the difference between XML and JSON is that XML is based on SGML while JSON is based on JavaScript.
+
 | HTML | XML | JSON |
 | --- | --- | --- |
-| a | b | c |
+| Uses predefined tags | User defined tags | - |
 
 ## Screenshots from Postman
 
