@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "Dune",
+            "rating": 4.2,
+            "release_date": "October 13, 2021",
+            "review": "Dune has a pace slower than most movies, however it manages to keep the audience at the edge of their seat with a soundtrack that blends beautifully with its epic visuals, along with characters you'll very easily root for."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": true,
+            "title": "La La Land",
+            "rating": 4.7,
+            "release_date": "December 9, 2016",
+            "review": "La La Land breathes new life into a bygone genre with thrillingly assured direction, powerful performances, and an irresistible excess of heart."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": false,
+            "title": "Thor: Love and Thunder",
+            "rating": 2.5,
+            "release_date": "July 8, 2022",
+            "review": "Thor: Love and Thunder feels like a film that passes by without delivering any sustenance featuring a villain that deserves a much better film. It brings up a lot of interesting ideas and ultimately does almost nothing with them."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": true,
+            "title": "The Sandman",
+            "rating": 3.9,
+            "release_date": "August 5, 2022",
+            "review": "The Sandman does justice to its source material while still reeling in newcomer fans, the heart of this series lies within its characters. Although some episodes leaves the viewer abit unsatisfied, sticking out until the end makes the stylish and visually arresting series really pays dividends."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": false,
+            "title": "House of the Dragon",
+            "rating": 4.5,
+            "release_date": "August 21, 2022",
+            "review": "House of the Dragon brings good writing that establishes a strong story and set of characters worth investing in within the first episode."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": false,
+            "title": "Andor",
+            "rating": 4.2,
+            "release_date": "September 21, 2022",
+            "review": "A more mature and darker Star Wars show, Andor brings beautiful cinematic visuals and story that'll challenge the rosy memory of your childhood space fantasy."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Everything Everywhere All at Once",
+            "rating": 5,
+            "release_date": "April 8, 2022",
+            "review": "A film that'll leave you tearing up by the end by its deep and powerful story. Led by an outstanding cast and amazingly directed by the Daniels, this movie with its eye-pleasing visuals and addicting score will expertly engage in all your senses."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": true,
+            "title": "Pride and Prejudice",
+            "rating": 4,
+            "release_date": "November 23, 2022",
+            "review": "Pride and Prejudice managed to succesfully reformulate the period piece into a delightful modern take along with a spirited and emotional performances by the entire cast."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": true,
+            "title": "Morbius",
+            "rating": 2,
+            "release_date": "April 1, 2022",
+            "review": "A bland movie, it falls apart due to its weak and laughable script. A movie filled with eyerolls and lack of any interesting appeal."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": true,
+            "title": "Doctor Strange in the Multiverse of Madness",
+            "rating": 3,
+            "release_date": "May 6, 2022",
+            "review": "There are some interesting ideas but the movie crumbles on itself with its inconsistent tone and at times forced comedy."
+        }
+    }
+]
