@@ -71,6 +71,12 @@ HTML is the outlier with the differences while XML and JSON is much more similar
 | HTML | XML | JSON |
 | --- | --- | --- |
 | Uses predefined tags | User defined tags | - |
+| Static | Dynamic | Dynamic |
+| Derived from SGML | Derived from SGML | Derived from JavaScript | 
+| Comments are supported | Comments are supported | Comments are not supported |
+| Used to display data | Used to store data | Used to store data |
+| HTML does not carry data, it only displays it | XML carries the data | JSON carries the data |
+| Closing tags are not necessary | Closing tags are necessary | It doesn't use end tag |
 
 ## Screenshots from Postman
 
