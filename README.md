@@ -78,6 +78,23 @@ HTML is the outlier with the differences while XML and JSON is much more similar
 | HTML does not carry data, it only displays it | XML carries the data | JSON carries the data |
 | Closing tags are not necessary | Closing tags are necessary | It doesn't use end tag |
 
+## Why We Need Data Delivery
+
+## How It Was Completed
+
+Firstly we create a new app called _mywatchlist_ from our Django Project using
+``` python
+python3 manage.py start app
+```
+After creating the app, open _settings.py_ and add our new app _mywatchlist_ in the _INSTALLED_APPS_ list.
+
+<img width="272" alt="Screen Shot 2022-09-22 at 12 10 45 AM" src="https://user-images.githubusercontent.com/101589777/191568349-bc2587eb-6d43-49ef-9e11-ec29ec5bb20e.png">
+
+Afterwards, we need to implement routing to our new app so that it can be accessed. We can do this by registering _mywatchlist_ application into _urls.py_. This will be the code implemented in _urls.py_
+
+<img width="506" alt="Screen Shot 2022-09-22 at 12 16 42 AM" src="https://user-images.githubusercontent.com/101589777/191569464-30b1b6e8-2b00-4809-b158-225bb974174e.png">
+
+
 ## Screenshots from Postman
 
 ###### HTML Variant
