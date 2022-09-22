@@ -94,6 +94,40 @@ Afterwards, we need to implement routing to our new app so that it can be access
 
 <img width="506" alt="Screen Shot 2022-09-22 at 12 16 42 AM" src="https://user-images.githubusercontent.com/101589777/191569464-30b1b6e8-2b00-4809-b158-225bb974174e.png">
 
+Now we move into the _models.py_ file in our application folder. Create a new class called _MyWatchList_, within it create the attributes as requested:
+
+<img width="406" alt="Screen Shot 2022-09-22 at 8 02 15 AM" src="https://user-images.githubusercontent.com/101589777/191635884-df0b1855-579f-4452-9e81-4a3acd07f436.png">
+
+Continue by migrating the model schema into the local Django database with
+```python
+python3 manage.py makemigrations
+```
+and then deploy the created model schema into the local Django database with 
+```python
+python3 manage.py makemigrate
+```
+
+After that I create the JSON file containing the data for the application,
+
+<img width="722" alt="Screen Shot 2022-09-22 at 8 07 15 AM" src="https://user-images.githubusercontent.com/101589777/191636369-f584f372-1c08-4bbb-bf39-822db930ac6a.png">
+
+then I load the data with
+
+```python
+python3 manage.py loaddata initial_mywatchlist_data.json
+```
+
+Then I create a funciton inside the views.py that is supposed to render the web page along with the data I've created within the JSON file. Not only that, I also implement 4 other functions. The function is used to return data in XML/JSON Form with and without ID.
+
+<img width="692" alt="Screen Shot 2022-09-22 at 8 10 43 AM" src="https://user-images.githubusercontent.com/101589777/191636712-6d4740f2-1791-4795-9ed1-98528ffc97a1.png">
+.
+We'll also fill in the html file according to the fields inside our _models.py_. In this one, I've modified the column for the watched to display icons depending on the boolean value.
+
+<img width="722" alt="Screen Shot 2022-09-22 at 8 14 21 AM" src="https://user-images.githubusercontent.com/101589777/191637027-db4438fc-1028-4904-9c0b-63b89b6e5c51.png">
+
+Then continue to implement the URL routing inside _urls.py_ for each path HTML, JSON, and XML. Then put the functions we created before in views into each respective url path.
+
+<img width="570" alt="Screen Shot 2022-09-22 at 8 18 34 AM" src="https://user-images.githubusercontent.com/101589777/191637375-9d71f280-7d3f-4aa5-82e7-36f2198b8820.png">
 
 ## Screenshots from Postman
 
