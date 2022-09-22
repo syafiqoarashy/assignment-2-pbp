@@ -6,6 +6,8 @@ Heroku App: https://assignment-2-pbp.herokuapp.com/
 
 Catalog Page: https://assignment-2-pbp.herokuapp.com/katalog/
 
+MyWatchList Page: https://assignment-2-pbp.herokuapp.com/mywatchlist/
+
 ## _MVT Diagram_ and How Its All Interlinked
 
 ![diagram](https://user-images.githubusercontent.com/101589777/190297274-eab2da6e-f7f9-4680-a126-6e210b5ae3f2.png)
@@ -86,7 +88,7 @@ Data delivery is very important in platform-based development. The use of data i
 
 Firstly we create a new app called _mywatchlist_ from our Django Project using
 ``` python
-python3 manage.py start app
+python3 manage.py startapp mywatchlist
 ```
 After creating the app, open _settings.py_ and add our new app _mywatchlist_ in the _INSTALLED_APPS_ list.
 
