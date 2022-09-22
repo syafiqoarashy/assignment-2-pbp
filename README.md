@@ -80,6 +80,8 @@ HTML is the outlier with the differences while XML and JSON is much more similar
 
 ## Why We Need Data Delivery
 
+Data delivery is very important in platform-based development. The use of data is very prominent and ofcourse we need data to be displayed in our web pages. If there was no HTML file, then there would be no way for the Django application to display the data we've created. If there was no XML/JSON file, there would be no place to store and carry out the data. If there were no data delivery, the web page we created for this assignment would be futile and empty. The World Wide Web is about communication between web clients and web servers. It does an HTTP Request-Response cycle which is apart of the Data Delivery protocol. As we see, Data Delivery is _essential_ to be implemented on a platform.
+
 ## How It Was Completed
 
 Firstly we create a new app called _mywatchlist_ from our Django Project using
@@ -120,7 +122,7 @@ python3 manage.py loaddata initial_mywatchlist_data.json
 Then I create a funciton inside the views.py that is supposed to render the web page along with the data I've created within the JSON file. Not only that, I also implement 4 other functions. The function is used to return data in XML/JSON Form with and without ID.
 
 <img width="692" alt="Screen Shot 2022-09-22 at 8 10 43 AM" src="https://user-images.githubusercontent.com/101589777/191636712-6d4740f2-1791-4795-9ed1-98528ffc97a1.png">
-.
+
 We'll also fill in the html file according to the fields inside our _models.py_. In this one, I've modified the column for the watched to display icons depending on the boolean value.
 
 <img width="722" alt="Screen Shot 2022-09-22 at 8 14 21 AM" src="https://user-images.githubusercontent.com/101589777/191637027-db4438fc-1028-4904-9c0b-63b89b6e5c51.png">
