@@ -86,7 +86,7 @@ Data delivery is very important in platform-based development. The use of data i
 
 Firstly we create a new app called _mywatchlist_ from our Django Project using
 ``` python
-python3 manage.py start app
+python3 manage.py startapp mywatchlist
 ```
 After creating the app, open _settings.py_ and add our new app _mywatchlist_ in the _INSTALLED_APPS_ list.
 
