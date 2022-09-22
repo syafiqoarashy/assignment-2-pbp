@@ -108,7 +108,7 @@ python3 manage.py makemigrations
 ```
 and then deploy the created model schema into the local Django database with 
 ```python
-python3 manage.py makemigrate
+python3 manage.py migrate
 ```
 
 After that I create the JSON file containing the data for the application,
