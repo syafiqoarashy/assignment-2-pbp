@@ -6,6 +6,8 @@ Heroku App: https://assignment-2-pbp.herokuapp.com/
 
 Catalog Page: https://assignment-2-pbp.herokuapp.com/katalog/
 
+MyWatchList Page: https://assignment-2-pbp.herokuapp.com/mywatchlist/
+
 ## _MVT Diagram_ and How Its All Interlinked
 
 ![diagram](https://user-images.githubusercontent.com/101589777/190297274-eab2da6e-f7f9-4680-a126-6e210b5ae3f2.png)
