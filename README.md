@@ -129,6 +129,8 @@ Then continue to implement the URL routing inside _urls.py_ for each path HTML, 
 
 <img width="570" alt="Screen Shot 2022-09-22 at 8 18 34 AM" src="https://user-images.githubusercontent.com/101589777/191637375-9d71f280-7d3f-4aa5-82e7-36f2198b8820.png">
 
+Lastly we need to deploy it into Heroku, we've succesfully done that with last week assignment and because there we're using the same repository as the previous assignment. There is no need to implement deployment again. The Heroku app has been configured to automatically update depending on the latest commit. However, if we were to go through the steps again. We'd have to create an app in our Heroku account and fetch its app name and our account API key. Then create 2 new repository secrets containing those 2 stuff. Lastly, don't forget to rerun the failed deployment. Our app should be accessible now.
+
 ## Screenshots from Postman
 
 ###### HTML Variant
