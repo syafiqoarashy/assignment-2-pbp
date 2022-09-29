@@ -172,3 +172,142 @@ So can you create them manually? Yes, you can do this by repeating them over the
   
 ## Data Flow of the Application
   
+The user would first go the task creation page, or https://assignment-2-pbp.herokuapp.com/todolist/create-task/ .
+
+<img width="439" alt="Screen Shot 2022-09-29 at 8 51 49 AM" src="https://user-images.githubusercontent.com/101589777/192920334-4e37dbca-f897-4b04-b71e-4cdcb7e3a51d.png">
+
+The user may submit a title and a description to the task, if left empty it will show a message telling them to fill the form. They also have the option to go back to the list.
+
+#### Content of _createtask.html_
+
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Create a New Task</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "task">
+
+    <h1>Create a New Task</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Title: </td>
+                <td><input type="text" name="title" placeholder="Title" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td>Description: </td>
+                <td><input type="textarea" name="description" placeholder="Description" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn create_btn" type="submit" value="Create Task"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    Want to go back to the list? <a href="{% url 'todolist:todolist' %}">Go Back</a>
+
+</div>
+
+{% endblock content %}
+```
+
+After a task is created, the create_task function is _views.py_ will check if the request method is POST. POST is used to send data to a server to create/update a resource. It will grab the title and description of the task submitted by the user. If the title and description is not empty it will continue, if not it will output a message. It will create an Task model object with the parameter used to assign each fields accordingly. The user is grabbed with ```request.user``` and the date is grabbed using the current date with ```datetime.datetime.today()```. Next it will redirect back to /todolist/ page. Also keep in mind that the create_task function is only possible if the user is logged in.
+
+
+#### Content of _create_task_ function
+
+```
+@login_required(login_url='/todolist/login/')
+def create_task(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        if title != "" and description != "":
+            Task.objects.create(user=request.user,title=title, description=description, date=datetime.datetime.today())
+            return redirect('todolist:todolist')
+        else:
+            messages.info(request, 'Please fill the title/description!')
+
+    context = {}    
+    return render(request, 'createtask.html', context)
+```
+
+Then, to display it on the /todolist/ page. We grab all the data of the user, we can do this by filtering all the Task model objects that is owned by the user. We then create a dictionary with according key: value pairs. Lastly, we render the html file with the context variable. Lastly, in the HTML file, it will iterate over the items in our list_item variable and write the data to the table in the HTML accordingly.
+
+#### Content of _show_todolist_ function
+
+```
+@login_required(login_url='/todolist/login/')
+def show_todolist(request):
+    data_todolist_item = Task.objects.filter(user = request.user)
+
+    context = {
+        'list_item' : data_todolist_item,
+        'user' : request.user,
+        'last_login': request.COOKIES['last_login'],
+    }
+    return render(request, "todolist.html", context)
+```
+
+#### Content of _todolist.html_
+
+```
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Task Manager</h1>
+
+<h3>Welcome, {{user}}!</h3>
+
+<table>
+    <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Finished</th>
+    </tr>
+    {% comment %} Add data below {% endcomment %}
+    {% for item in list_item %}
+        <tr>
+            <td>{{item.date}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+            <td>
+                {% if item.is_finished %}
+                Yes
+                <input type="checkbox" onclick="location.href=`{% url 'todolist:complete_task_id' item.id %}`" checked/>
+                {% else %}
+                No
+                <input type="checkbox" onclick="location.href=`{% url 'todolist:complete_task_id' item.id %}`"/>
+                {% endif %}
+            </td>
+            <td>
+                <button><a href="{% url 'todolist:delete_task_id' item.id %}">Delete Task</a></button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<button><a href="{% url 'todolist:create_task' %}">New Task</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}
+```
