@@ -153,4 +153,10 @@ Lastly we need to deploy it into Heroku, we've succesfully done that with last w
 
 # ASSIGNMENT 3
 
+## What does ```{% csrf_token %}``` do?
 
+Firstly, what is CSRF? CSRF or Cross Site Request Forgery is a type of exploit that makes the user do unwanted actions on a web app they trust while they are logged in. For example, adding a button or a link to a suspicious website that makes a request to another site that you're currently authenticated on. CSRF Token is the deterrant to this. A CSRF Token is a secure random token, the token is unique per user session and is made of large value to make it unpredictable. They are generated using a cryptographic strength pseudo-random number generator (PNRG), which is seeded with the timestamp when it was created and a static secret. These tokens are generated and submitted by the server-side application in a subsequent HTTP request made by the client.
+
+The CSRF Token should be transmitted to the client within a hidden HTML form field with the POST method. This will then include the token as a request parameter when the form is submitted. That is why you'll se the ```{% csrf_token %}```below the form tag.
+
+## Can We Create a Form Manually?
