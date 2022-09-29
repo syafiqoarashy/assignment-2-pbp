@@ -151,7 +151,7 @@ Lastly we need to deploy it into Heroku, we've succesfully done that with last w
 
 <img width="1435" alt="Screen Shot 2022-09-21 at 3 53 13 PM" src="https://user-images.githubusercontent.com/101589777/191460585-be7dcf55-f87e-4681-a889-021c898b3916.png">
 
-# ASSIGNMENT 3
+# ASSIGNMENT 4
 
 ## What does ```{% csrf_token %}``` do?
 
@@ -160,3 +160,15 @@ Firstly, what is CSRF? CSRF or Cross Site Request Forgery is a type of exploit t
 The CSRF Token should be transmitted to the client within a hidden HTML form field with the POST method. This will then include the token as a request parameter when the form is submitted. That is why you'll se the ```{% csrf_token %}```below the form tag.
 
 ## Can We Create a Form Manually?
+
+Short answer, **Yes**.
+
+```{{ form.as_table }}``` is used to render Django forms as a table. Yes! You can create HTML forms through Django. Django forms is an advanced set of HTML forms that you can create through Python. They support all features of HTML forms but in a pythonic way. There are other output options, like:
+1. ```{{ form.as_table }}``` - is used to render Django forms and wrap them in ```<tr>``` tags.
+2. ```{{ form.as_p }}``` - is used to render Django forms and wrap them in ```<p>``` tags.
+3. ```{{ form.as_ul }}``` - is used to render Django forms and wrap them in ```<li>``` tags.
+
+So can you create them manually? Yes, you can do this by repeating them over the form fields and manually doing them one by one. This means we can override it manually and change the default form.
+  
+## Data Flow of the Application
+  
