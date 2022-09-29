@@ -311,3 +311,29 @@ def show_todolist(request):
 
 {% endblock content %}
 ```
+
+## How It Was Completed
+
+#### 1. Create a new application called todolist in the previously deployed Django task project.
+
+Firstly we create a new app called todolist from our Django Project using
+
+``` python
+python3 manage.py startapp todolist
+```
+
+After creating the app, open _settings.py_ and add our new app _todolist_ in the _INSTALLED_APPS_ list.
+
+<img width="290" alt="Screen Shot 2022-09-29 at 9 44 22 AM" src="https://user-images.githubusercontent.com/101589777/192926818-dc670cf4-4a93-4e41-952c-c980b0d829f4.png">
+
+#### 2. Add the path todolist so that users can access http://localhost:8000/todolist.
+
+We need to implement routing for our new todolist application. So first, we must register our app into our _urls.py_. All we need to is add a new path for our todolist application in the patterns.
+
+<img width="578" alt="Screen Shot 2022-09-29 at 9 47 27 AM" src="https://user-images.githubusercontent.com/101589777/192927206-d7ab653f-9eb3-48a6-b090-a260534dfc26.png">
+
+#### 3. Create a Task model
+
+
+
+
