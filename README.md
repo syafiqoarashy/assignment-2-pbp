@@ -1,5 +1,3 @@
-# ASSIGNMENT 2
-
 ## Link to Heroku App!
 
 Heroku App: https://assignment-2-pbp.herokuapp.com/
@@ -7,6 +5,10 @@ Heroku App: https://assignment-2-pbp.herokuapp.com/
 Catalog Page: https://assignment-2-pbp.herokuapp.com/katalog/
 
 MyWatchList Page: https://assignment-2-pbp.herokuapp.com/mywatchlist/
+
+ToDoList Page: https://assignment-2-pbp.herokuapp.com/todolist/
+
+# ASSIGNMENT 2
 
 ## _MVT Diagram_ and How Its All Interlinked
 
@@ -148,3 +150,7 @@ Lastly we need to deploy it into Heroku, we've succesfully done that with last w
 ###### JSON Variant
 
 <img width="1435" alt="Screen Shot 2022-09-21 at 3 53 13 PM" src="https://user-images.githubusercontent.com/101589777/191460585-be7dcf55-f87e-4681-a889-021c898b3916.png">
+
+# ASSIGNMENT 3
+
+
