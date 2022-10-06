@@ -926,6 +926,10 @@ select {
   margin-left: 0.75rem;
 }
 
+.mr-0 {
+  margin-right: 0px;
+}
+
 .block {
   display: block;
 }

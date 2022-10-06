@@ -3,11 +3,11 @@
 {% block content %}
 <body>
     <nav class="bg-[#87BCF2] drop-shadow-lg shadow-[#BCDBFB] border-gray-200 px-2 sm:px-3 py-4 rounded">
-        <div class="container flex flex-wrap justify-between items-center mx-auto sm:ml-0 ml-3">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
             <a href="" class="flex items-center">
                 <span class="self-center text-2xl font-bold whitespace-nowrap">{{user}}'s Task Manager</span>
             </a>
-            <button class="bg-white py-3 px-8 rounded-2xl shadow-2xl sm:ml-0 font-medium ml-[120px]"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+            <button class="bg-white py-3 px-8 rounded-2xl shadow-2xl font-medium "><a href="{% url 'todolist:logout' %}">Logout</a></button>
     </nav>
     <section class="bg-[#F3F5F9] min-h-screen flex justify-center items-center">
         <div class="flex flex-col text-center">
