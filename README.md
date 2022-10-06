@@ -612,6 +612,38 @@ Example:
 
 Internal CSS requires you to add the styles onto the header of the HTML file. In there, specific rules of styles are applied to the HTML tags that are written inside it.
 
+Example:
+``<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: red;
+}
+p {
+    color: white;
+    padding: 30px;
+} 
+</style>
+</head>``
+
 ##### External CSS
 
 Unlike the two others, external CSS uses a separate .css file. The .css file is then link back onto the HTML file in the document head.
+
+Example:
+``
+.leftcol {
+   width: 34%;
+   background:#ffffff;
+}``
+
+| Type | Advantages | Disadvantages |
+| --- | --- | --- |
+| Inline CSS | Easily and quickly insert CSS rules to HTML, performance is quicker| Difficult to keep up and reuse, makes the HTML file unorganized |
+| Internal CSS | One style of same element so there's no need to repeat | Unable to use the defined style on another HTML page, may increase the page’s size and loading time. |
+| External CSS | Full control of page structure, you can reuse the .css file for multiple pages, HTML file would be much structured and cleaner | May not be rendered correctly up until the externa css is loaded, may increase website's download time. |
+
+##### HTML5 Tags
+
+
