@@ -593,3 +593,25 @@ we've succesfully done that with first week assignment and because we're using t
 <img width="590" alt="Screen Shot 2022-09-29 at 10 14 13 AM" src="https://user-images.githubusercontent.com/101589777/192930439-ac16377a-d087-4300-aa91-4cf53acc5093.png">
 
 <img width="821" alt="Screen Shot 2022-09-29 at 10 16 54 AM" src="https://user-images.githubusercontent.com/101589777/192930762-d04c87ea-6ecd-425b-b523-ebb5372be4e1.png">
+
+# ASSIGNMENT 5
+
+## Difference Between Inline, Internal, and External CSS
+
+#### Each Definitions
+
+##### Inline CSS
+
+When you want to style a specific HTML element, you can use Inline CSS. This one directly puts the style attribute directly onto the HTML tag that you want to stylized. Therefore, they relate only to a specific HTML tag.
+
+Example:
+``<h1 style="color:blue;12px;">This is Inline!</h1>``
+
+
+##### Internal CSS
+
+Internal CSS requires you to add the styles onto the header of the HTML file. In there, specific rules of styles are applied to the HTML tags that are written inside it.
+
+##### External CSS
+
+Unlike the two others, external CSS uses a separate .css file. The .css file is then link back onto the HTML file in the document head.
