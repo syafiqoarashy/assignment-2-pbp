@@ -605,7 +605,7 @@ we've succesfully done that with first week assignment and because we're using t
 When you want to style a specific HTML element, you can use Inline CSS. This one directly puts the style attribute directly onto the HTML tag that you want to stylized. Therefore, they relate only to a specific HTML tag.
 
 Example:
-``<h1 style="color:blue;12px;">This is Inline!</h1>``
+```<h1 style="color:blue;12px;">This is Inline!</h1>```
 
 
 ##### Internal CSS
@@ -613,7 +613,7 @@ Example:
 Internal CSS requires you to add the styles onto the header of the HTML file. In there, specific rules of styles are applied to the HTML tags that are written inside it.
 
 Example:
-``<!DOCTYPE html>
+```<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -625,18 +625,18 @@ p {
     padding: 30px;
 } 
 </style>
-</head>``
+</head>```
 
 ##### External CSS
 
 Unlike the two others, external CSS uses a separate .css file. The .css file is then link back onto the HTML file in the document head.
 
 Example:
-``
+```
 .leftcol {
    width: 34%;
    background:#ffffff;
-}``
+}```
 
 | Type | Advantages | Disadvantages |
 | --- | --- | --- |
@@ -654,7 +654,7 @@ Example:
 <a>       : Tag that is used as a hyperlink.
 <button>  : Tag that creates a button.
 <input>   : Tag to define input control.
-<script>	: Tag that specifies a script.
+<script>  : Tag that specifies a script.
 <title>   : Tag that specifies the document title.
 ```
 
