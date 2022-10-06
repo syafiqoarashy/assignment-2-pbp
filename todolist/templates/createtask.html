@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'test.html' %}
 
 {% block meta %}
 <title>Create a New Task</title>
@@ -6,41 +6,59 @@
 
 {% block content %}
 
-<div class = "task">
+<body>
+    <section class="bg-[#87BCF2] min-h-screen flex flex-row items-center justify-center">
 
-    <h1>Create a New Task</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Title: </td>
-                <td><input type="text" name="title" placeholder="Title" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td>Description: </td>
-                <td><input type="textarea" name="description" placeholder="Description" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn create_btn" type="submit" value="Create Task"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+        <div class="bg-[#F3F5F9] flex rounded-2xl shadow-2xl shadow-blue-500 max-w-3xl p-5 items-center">
+            <div class=" px-8">
+                <div class="flex flex-row">
+                    <h2 class="font-bold text-3xl">Tell us what you're up to</h2>
+                    <h2 class="font-extrabold text-3xl text-[#0951A8]">.</h2>
+                </div>
+                <p class="text-sm mt-2">Add one of your to-do for today!</p>
+                <form method="POST" action="" class="flex flex-col">
+                    {% csrf_token %}
+                    <input class="p-2 mt-4 mb-3 rounded-xl border border-white" type="text" name="title" placeholder="Title">
+                    <p class="text-sm mb-2">Describe your task</p>
+                        <textarea class="rounded-xl border text-black border-white mb-5" name="description"></textarea>
+                    <button class="bg-[#0951A8] shadow-md mb-3 shadow-blue-500/50 rounded-xl text-white py-2 hover:scale-110 duration-500">New task</button>
+                </form>
+                {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="mt-4 text-center text-sm">{{ message }}</li>
+                {% endfor %}
+            </ul>
     {% endif %}
+                <div class="mt-4 grid grid-cols-3 items-center text-gray-500">
+                    <hr class="border-gray-500">
+                    <p class="text-center items-center">OR</p>
+                    <hr class="border-gray-500">
+                </div>
+                <div>
+                    <button class="bg-white w-full rounded-xl text-gray-600 text-md py-2 mt-4 border hover:scale-110 duration-500">
+                        <a href="{% url 'todolist:todolist' %}">
+                            Go back
+                        </a></button>
+                </div>
+            </div>
+            
+            <!-- <div class="sm:block hidden w-1/2">
+                <img class="rounded-2xl object-cover h-96 w-80" src="https://cdn.discordapp.com/attachments/870380505021968385/1027321829641179166/isometric-checklist-to-do-list-clipboard-checklist-project-management-planning-keeping-score-completed-tasks-155265371.jpeg">
+            </div>
+        </div> -->
 
-    <br>
-    Want to go back to the list? <a href="{% url 'todolist:todolist' %}">Go Back</a>
 
-</div>
+        <!-- <div class="flex flex-row mt-8 text-3xl">
+            <h1 class="font-normal  text-[#F3F5F9]">anywhere</h1>
+            <h1 class="font-extrabold text-[#FF0076]">.&nbsp;</h1>
+            <h1 class="font-normal text-[#F3F5F9]">anytime</h1>
+            <h1 class="font-extrabold text-[#FF0076]">.&nbsp;</h1>
+            <h1 class="font-normal text-[#F3F5F9]">your&nbsp;</h1>
+            <h1 class="font-semibold text-[#FF0076]">to-do's</h1>
+        </div> -->
+        
+    </section>
+</body>
 
 {% endblock content %}

@@ -22,6 +22,9 @@ def show_todolist(request):
     }
     return render(request, "todolist.html", context)
 
+def show_test(request):
+    return render(request, 'test.html')
+
 def register(request):
     form = UserCreationForm()
 

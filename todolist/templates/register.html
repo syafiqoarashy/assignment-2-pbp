@@ -1,33 +1,46 @@
-{% extends 'base.html' %}
+{% extends 'test.html' %}
 
 {% block meta %}
 <title>Account Registration</title>
 {% endblock meta %}
 
+
 {% block content %}
-
-<div class = "login">
-    <h1>Registration Form</h1>
-
-        <form method="POST" >
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-                <tr>
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Register"/></td>
-                </tr>
-            </table>
-        </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-        </ul>
-    {% endif %}
-
-</div>
-
+<body>
+    <section class="bg-[#87BCF2] min-h-screen flex flex-row items-center">
+        <div class=>
+            <div class="flex flex-row mx-10">
+                <h1 class="text-[#F3F5F9] text-4xl font-bold">Create a new account</h1>
+                <h1 class="text-[#0951A8] text-4xl font-bold">.</h1>
+            </div>
+            
+            <div class="flex flex-row mx-10 mb-3">
+                <p class="text-black text-lg font-semibold">Already a member?</p>
+                <a class="text-[#276FC8] text-lg font-medium" href="{% url 'todolist:login' %}">&nbsp;Login</a>
+            </div>
+        <div class="bg-[#F3F5F9] rounded-2xl items-center mx-10 p-10">
+                <form method="POST">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                        <tr>
+                            <td></td>
+                            <td>
+                            <button class="bg-[#0951A8] shadow-sm shadow-blue-500 p-[70px] rounded-xl text-sm py-3 mt-4 hover:scale-110 duration-500">
+                                <input class="text-white text-lg font-medium" type="submit" name="submit" value="Register"/></td>
+                            </button>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="p-5 items-center text-center">
+            <div>
+                <h1>
+                    
+                </h1>
+            </div>
+        </div>
+    </section>
+</body>
 {% endblock content %}

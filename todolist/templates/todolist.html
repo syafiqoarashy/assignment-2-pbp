@@ -1,11 +1,69 @@
-{% extends 'base.html' %}
+{% extends 'test.html' %}
 
 {% block content %}
-<h1>Your Task Manager</h1>
+<body>
+    <nav class="bg-[#87BCF2] drop-shadow-lg shadow-[#BCDBFB] border-gray-200 px-2 sm:px-3 py-4 rounded">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+            <a href="" class="flex items-center">
+                <span class="self-center text-2xl font-bold whitespace-nowrap">{{user}}'s Task Manager</span>
+            </a>
+            <button class="bg-white py-3 px-8 rounded-2xl shadow-2xl font-medium"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+    </nav>
+    <section class="bg-[#F3F5F9] min-h-screen flex justify-center items-center">
+        <div class="flex flex-col text-center">
+            <div class="p-4 my-5">
+                <h3 class="font-medium text-xl">Welcome back, {{user}}!</h3>
+            </div>
+            <div class="flex flex-wrap flex-row">
+                {% for item in list_item %}
+                <div>
+                    <div class="w-80 mx-5 bg-white shadow-2xl rounded-lg overflow-hidden group">
+                        <img src="https://cdn.discordapp.com/attachments/870380505021968385/1027314161698492456/example.jpeg">
+                        <div class="py-4 px-5 text-center">
+                            <p class="text-[#FF0076] uppercase tracking-wide font-bold text-sm">
+                                {{item.date}}
+                            </p>
+                            <h1 class="text-gray-800 uppercase tracking-wide font-bold text-2xl">
+                                {{item.title}}
+                            </h1>
+                            <p class="text-sm tracking-wide text-gray-500 my-4">
+                                {{item.description}}
+                            </p>
+                            {% if item.is_finished %}
+                            <h1 class="bg-green-600 shadow-sm shadow-green-500 text-white p-3 rounded-2xl uppercase tracking-wide font-bold text-2xl">
+                                Finished
+                            </h1>
+                            {% else %}
+                            <h1 class="bg-[#BCDBFB] shadow-sm shadow-[#BCDBFB] text-[#87BCF2] p-3 rounded-2xl uppercase tracking-wide font-bold text-2xl">
+                                Not Finish
+                            </h1>
+                            {% endif %}
+                        </div>
+                        <div class="items-center justify-center bg-[#276FC8] text-center h-0 group-hover:h-16 transition-all duration-300">
+                                <div class="text-[#276FC8] p-[14px] items-center">
+                                    <button class="bg-white rounded-2xl p-2 text-[14px] mx-3 mr-5 font-normal grow" onclick="location.href=`{% url 'todolist:complete_task_id' item.id %}`">Change Status</p>  
+                                    <button class="bg-white rounded-2xl p-2 text-[14px] mx-3 font-normal grow" onclick="location.href=`{% url 'todolist:delete_task_id' item.id %}`">Delete Task</p> 
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            
 
-<h3>Welcome, {{user}}!</h3>
+            <div class="mt-5 p-4">
+                <button class="bg-white p-4 px-8 rounded-2xl shadow-2xl"><a href="{% url 'todolist:create_task' %}">+ New Task</a></button>
+            </div>
+        </div>
+        
+        <br>
+    </section>
+    
 
-<table>
+
+
+<!-- <table>
     <tr>
     <th>Date</th>
     <th>Title</th>
@@ -31,10 +89,10 @@
                 <button><a href="{% url 'todolist:delete_task_id' item.id %}">Delete Task</a></button>
             </td>
         </tr>
-    {% endfor %}
-</table>
-<br>
-<button><a href="{% url 'todolist:create_task' %}">New Task</a></button>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+    {% endfor %} -->
+<!-- </table> -->
+
+</body>
+
 
 {% endblock content %}

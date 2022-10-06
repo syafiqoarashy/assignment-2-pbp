@@ -1,47 +1,64 @@
-{% extends 'base.html' %}
+{% extends 'test.html' %}
 
 {% block meta %}
 <title>Task Manager</title>
 {% endblock meta %}
 
+
 {% block content %}
 
-<div class = "login">
+<body>
+    <section class="bg-[#87BCF2] min-h-screen flex flex-col items-center justify-center">
 
-    <h1>Welcome to the Task Manager</h1>
-
-    <h2>Login</h2>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+        <div class="bg-[#F3F5F9] flex rounded-2xl shadow-2xl shadow-blue-500 max-w-3xl p-5 items-center">
+            <div class="sm:w-1/2 px-8">
+                <div class="flex flex-row">
+                    <h2 class="font-bold text-3xl">Login</h2>
+                    <h2 class="font-extrabold text-3xl text-[#0951A8]">.</h2>
+                </div>
+                <p class="text-sm mt-2">Access your own Task Manager now</p>
+                <form method="POST" action="" class="flex flex-col gap-4">
+                    {% csrf_token %}
+                    <input class="p-2 mt-4 rounded-xl border border-white" type="text" name="username" placeholder="Username">
+                    <input class="p-2 rounded-xl border border-white" type="password" name="password" placeholder="Password">
+                    <button class="bg-[#0951A8] shadow-md shadow-blue-500/50 rounded-xl text-white py-2 hover:scale-110 duration-500">Login</button>
+                </form>
+                {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="mt-4 text-center text-sm">{{ message }}</li>
+                {% endfor %}
+            </ul>
     {% endif %}
+                <div class="mt-4 grid grid-cols-3 items-center text-gray-500">
+                    <hr class="border-gray-500">
+                    <p class="text-center items-center">OR</p>
+                    <hr class="border-gray-500">
+                </div>
+                <div>
+                    <button class="bg-white w-full rounded-xl text-gray-600 text-sm py-2 mt-4 border hover:scale-110 duration-500">
+                        <a href="{% url 'todolist:register' %}">
+                            Create an Account
+                        </a></button>
+                </div>
+            </div>
+            <div class="sm:block hidden w-1/2">
+                <img class="rounded-2xl object-cover h-96 w-80" src="https://cdn.discordapp.com/attachments/870380505021968385/1027321829641179166/isometric-checklist-to-do-list-clipboard-checklist-project-management-planning-keeping-score-completed-tasks-155265371.jpeg">
+            </div>
+        </div>
 
-    Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a>
 
-</div>
+        <div class="flex flex-row mt-8 text-3xl">
+            <h1 class="font-normal  text-[#F3F5F9]">anywhere</h1>
+            <h1 class="font-extrabold text-[#FF0076]">.&nbsp;</h1>
+            <h1 class="font-normal text-[#F3F5F9]">anytime</h1>
+            <h1 class="font-extrabold text-[#FF0076]">.&nbsp;</h1>
+            <h1 class="font-normal text-[#F3F5F9]">your&nbsp;</h1>
+            <h1 class="font-semibold text-[#FF0076]">to-do's</h1>
+        </div>
+        
+    </section>
+</body>
+</html>
 
 {% endblock content %}
