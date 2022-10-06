@@ -647,15 +647,15 @@ Example:
 ## HTML5 Tags
 
 ```
-<body>   : Tag that describes the documents body.
+<body>    : Tag that describes the documents body.
 <head>    : Tag that contains information about the document, belongs to the head portion.
 <h1>      : The largest heading, usually used as the web's title. 
 <p>       : Tag that is used to create a paragraph.
 <a>       : Tag that is used as a hyperlink.
 <button>  : Tag that creates a button.
-<input>   : Tag to define input control
-<script>	: Tgat that specifies a script
-<title>   : Tag that specifies the document title
+<input>   : Tag to define input control.
+<script>	: Tag that specifies a script.
+<title>   : Tag that specifies the document title.
 ```
 
 ## CSS Tags
