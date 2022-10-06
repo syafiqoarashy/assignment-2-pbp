@@ -1002,8 +1002,20 @@ select {
   height: 1.5rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
+.h-\[300px\] {
+  height: 300px;
+}
+
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-1\/2 {
@@ -1040,6 +1052,26 @@ select {
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-\[500px\] {
+  width: 500px;
+}
+
+.w-\[1000px\] {
+  width: 1000px;
+}
+
+.w-\[844px\] {
+  width: 844px;
+}
+
+.w-\[600px\] {
+  width: 600px;
+}
+
+.w-\[550px\] {
+  width: 550px;
 }
 
 .max-w-3xl {
@@ -1367,6 +1399,11 @@ select {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-scale-down {
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
 }
 
 .p-5 {
@@ -1914,8 +1951,21 @@ select {
     height: 2.25rem;
   }
 
+  .sm\:h-full {
+    height: 100%;
+  }
+
   .sm\:w-1\/2 {
     width: 50%;
+  }
+
+  .sm\:w-full {
+    width: 100%;
+  }
+
+  .sm\:object-scale-down {
+    -o-object-fit: scale-down;
+       object-fit: scale-down;
   }
 
   .sm\:px-4 {
@@ -1937,11 +1987,25 @@ select {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
+
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 @media (min-width: 768px) {
   .md\:ml-\[120px\] {
     margin-left: 120px;
+  }
+
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:text-sm {
