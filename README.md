@@ -151,6 +151,445 @@ Lastly we need to deploy it into Heroku, we've succesfully done that with last w
 
 <img width="1435" alt="Screen Shot 2022-09-21 at 3 53 13 PM" src="https://user-images.githubusercontent.com/101589777/191460585-be7dcf55-f87e-4681-a889-021c898b3916.png">
 
-# ASSIGNMENT 3
+# ASSIGNMENT 4
+
+## What does ```{% csrf_token %}``` do?
+
+Firstly, what is CSRF? CSRF or Cross Site Request Forgery is a type of exploit that makes the user do unwanted actions on a web app they trust while they are logged in. For example, adding a button or a link to a suspicious website that makes a request to another site that you're currently authenticated on. CSRF Token is the deterrant to this. A CSRF Token is a secure random token, the token is unique per user session and is made of large value to make it unpredictable. They are generated using a cryptographic strength pseudo-random number generator (PNRG), which is seeded with the timestamp when it was created and a static secret. These tokens are generated and submitted by the server-side application in a subsequent HTTP request made by the client.
+
+The CSRF Token should be transmitted to the client within a hidden HTML form field with the POST method. This will then include the token as a request parameter when the form is submitted. That is why you'll se the ```{% csrf_token %}```below the form tag.
+
+## Can We Create a Form Manually?
+
+Short answer, **Yes**.
+
+```{{ form.as_table }}``` is used to render Django forms as a table. Yes! You can create HTML forms through Django. Django forms is an advanced set of HTML forms that you can create through Python. They support all features of HTML forms but in a pythonic way. There are other output options, like:
+1. ```{{ form.as_table }}``` - is used to render Django forms and wrap them in ```<tr>``` tags.
+2. ```{{ form.as_p }}``` - is used to render Django forms and wrap them in ```<p>``` tags.
+3. ```{{ form.as_ul }}``` - is used to render Django forms and wrap them in ```<li>``` tags.
+
+So can you create them manually? Yes, you can do this by repeating them over the form fields and manually doing them one by one. This means we can override it manually and change the default form.
+  
+## Data Flow of the Application
+  
+The user would first go the task creation page, or https://assignment-2-pbp.herokuapp.com/todolist/create-task/ .
+
+<img width="439" alt="Screen Shot 2022-09-29 at 8 51 49 AM" src="https://user-images.githubusercontent.com/101589777/192920334-4e37dbca-f897-4b04-b71e-4cdcb7e3a51d.png">
+
+The user may submit a title and a description to the task, if left empty it will show a message telling them to fill the form. They also have the option to go back to the list.
+
+#### Content of _createtask.html_
+
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Create a New Task</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "task">
+
+    <h1>Create a New Task</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Title: </td>
+                <td><input type="text" name="title" placeholder="Title" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td>Description: </td>
+                <td><input type="textarea" name="description" placeholder="Description" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn create_btn" type="submit" value="Create Task"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    Want to go back to the list? <a href="{% url 'todolist:todolist' %}">Go Back</a>
+
+</div>
+
+{% endblock content %}
+```
+
+After a task is created, the create_task function is _views.py_ will check if the request method is POST. POST is used to send data to a server to create/update a resource. It will grab the title and description of the task submitted by the user. If the title and description is not empty it will continue, if not it will output a message. It will create an Task model object with the parameter used to assign each fields accordingly. The user is grabbed with ```request.user``` and the date is grabbed using the current date with ```datetime.datetime.today()```. Next it will redirect back to /todolist/ page. Also keep in mind that the create_task function is only possible if the user is logged in.
 
 
+#### Content of _create_task_ function
+
+```
+@login_required(login_url='/todolist/login/')
+def create_task(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        if title != "" and description != "":
+            Task.objects.create(user=request.user,title=title, description=description, date=datetime.datetime.today())
+            return redirect('todolist:todolist')
+        else:
+            messages.info(request, 'Please fill the title/description!')
+
+    context = {}    
+    return render(request, 'createtask.html', context)
+```
+
+Then, to display it on the /todolist/ page. We grab all the data of the user, we can do this by filtering all the Task model objects that is owned by the user. We then create a dictionary with according key: value pairs. Lastly, we render the html file with the context variable. Lastly, in the HTML file, it will iterate over the items in our list_item variable and write the data to the table in the HTML accordingly.
+
+#### Content of _show_todolist_ function
+
+```
+@login_required(login_url='/todolist/login/')
+def show_todolist(request):
+    data_todolist_item = Task.objects.filter(user = request.user)
+
+    context = {
+        'list_item' : data_todolist_item,
+        'user' : request.user,
+        'last_login': request.COOKIES['last_login'],
+    }
+    return render(request, "todolist.html", context)
+```
+
+#### Content of _todolist.html_
+
+```
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Task Manager</h1>
+
+<h3>Welcome, {{user}}!</h3>
+
+<table>
+    <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Finished</th>
+    </tr>
+    {% comment %} Add data below {% endcomment %}
+    {% for item in list_item %}
+        <tr>
+            <td>{{item.date}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+            <td>
+                {% if item.is_finished %}
+                Yes
+                <input type="checkbox" onclick="location.href=`{% url 'todolist:complete_task_id' item.id %}`" checked/>
+                {% else %}
+                No
+                <input type="checkbox" onclick="location.href=`{% url 'todolist:complete_task_id' item.id %}`"/>
+                {% endif %}
+            </td>
+            <td>
+                <button><a href="{% url 'todolist:delete_task_id' item.id %}">Delete Task</a></button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<button><a href="{% url 'todolist:create_task' %}">New Task</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}
+```
+
+## How It Was Completed
+
+#### 1. Create a new application called todolist in the previously deployed Django task project.
+
+Firstly we create a new app called todolist from our Django Project using
+
+``` python
+python3 manage.py startapp todolist
+```
+
+After creating the app, open _settings.py_ and add our new app _todolist_ in the _INSTALLED_APPS_ list.
+
+<img width="290" alt="Screen Shot 2022-09-29 at 9 44 22 AM" src="https://user-images.githubusercontent.com/101589777/192926818-dc670cf4-4a93-4e41-952c-c980b0d829f4.png">
+
+#### 2. Add the path todolist so that users can access http://localhost:8000/todolist.
+
+We need to implement routing for our new todolist application. So first, we must register our app into our _urls.py_. All we need to is add a new path for our todolist application in the patterns.
+
+<img width="578" alt="Screen Shot 2022-09-29 at 9 47 27 AM" src="https://user-images.githubusercontent.com/101589777/192927206-d7ab653f-9eb3-48a6-b090-a260534dfc26.png">
+
+#### 3. Create a Task model
+
+Create a task model according attributes ask inside our _models.py_
+
+<img width="504" alt="Screen Shot 2022-09-29 at 9 53 52 AM" src="https://user-images.githubusercontent.com/101589777/192927989-1db85bf0-1a59-40e7-8845-83de1fe67284.png">
+
+Continue by migrating the model schema into the local Django database with
+```python
+python3 manage.py makemigrations
+```
+and then deploy the created model schema into the local Django database with 
+```python
+python3 manage.py migrate
+```
+
+#### 4.  Implement the registration, login, and logout forms so that users can use todolist properly.
+
+Create the functions in our _views.py_ for each forms.
+
+###### Content of register function
+<img width="545" alt="Screen Shot 2022-09-29 at 9 56 49 AM" src="https://user-images.githubusercontent.com/101589777/192928385-6174abc7-9bb9-4a27-b405-d236f56d333f.png">
+
+###### Content of login function
+<img width="601" alt="Screen Shot 2022-09-29 at 9 57 30 AM" src="https://user-images.githubusercontent.com/101589777/192928488-f1da2e28-9c2e-47d9-8fdf-6b424c31a59e.png">
+
+###### Content of logout function
+<img width="490" alt="Screen Shot 2022-09-29 at 9 59 38 AM" src="https://user-images.githubusercontent.com/101589777/192928746-1a24bff7-42e0-4ef4-871e-462ef6733bf9.png">
+
+Then continue to create their respective HTML files,
+
+###### Content of register.html
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Account Registration</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "login">
+    <h1>Registration Form</h1>
+
+        <form method="POST" >
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Register"/></td>
+                </tr>
+            </table>
+        </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>
+
+{% endblock content %}
+```
+
+###### Content of login.html
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Task Manager</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "login">
+
+    <h1>Welcome to the Task Manager</h1>
+
+    <h2>Login</h2>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a>
+
+</div>
+
+{% endblock content %}
+```
+
+#### 5. Create a todolist main page that contains the user's username, the Add New Task button, the logout button, and a table containing the task creation date, task title, and task description.
+
+The main page is created with the todolist.html file.
+
+###### Content of todolist.html
+
+```
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Task Manager</h1>
+
+<h3>Welcome, {{user}}!</h3>
+
+<table>
+    <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Finished</th>
+    </tr>
+    {% comment %} Add data below {% endcomment %}
+    {% for item in list_item %}
+        <tr>
+            <td>{{item.date}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+            <td>
+                {% if item.is_finished %}
+                Yes
+                <input type="checkbox" onclick="location.href=`{% url 'todolist:complete_task_id' item.id %}`" checked/>
+                {% else %}
+                No
+                <input type="checkbox" onclick="location.href=`{% url 'todolist:complete_task_id' item.id %}`"/>
+                {% endif %}
+            </td>
+            <td>
+                <button><a href="{% url 'todolist:delete_task_id' item.id %}">Delete Task</a></button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<button><a href="{% url 'todolist:create_task' %}">New Task</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}
+```
+
+#### 6. Create a form page for task creation.
+
+I created the form page by using the login page as my reference. So there's a lot of similarities between them. Also, as mentioned previously I created a function at _views.py_ for creating tasks.
+
+###### Content of createtask.html
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Create a New Task</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "task">
+
+    <h1>Create a New Task</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Title: </td>
+                <td><input type="text" name="title" placeholder="Title" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td>Description: </td>
+                <td><input type="textarea" name="description" placeholder="Description" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn create_btn" type="submit" value="Create Task"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    Want to go back to the list? <a href="{% url 'todolist:todolist' %}">Go Back</a>
+
+</div>
+
+{% endblock content %}
+```
+
+###### Content of create_task function
+```
+@login_required(login_url='/todolist/login/')
+def create_task(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        if title != "" and description != "":
+            Task.objects.create(user=request.user,title=title, description=description, date=datetime.datetime.today())
+            return redirect('todolist:todolist')
+        else:
+            messages.info(request, 'Please fill the title/description!')
+
+    context = {}    
+    return render(request, 'createtask.html', context)
+```
+
+#### 7. Create a routing so that some functions can be accessed
+
+Then continue to implement the URL routing inside _urls.py_ for each path. Then put the functions we created before in views into each respective url path.
+
+<img width="620" alt="Screen Shot 2022-09-29 at 10 09 40 AM" src="https://user-images.githubusercontent.com/101589777/192929953-8de59ae1-885c-4dd8-a5f2-b5af989b0543.png">
+
+#### 8. Deployment
+
+we've succesfully done that with first week assignment and because we're using the same repository as the previous assignment. There is no need to implement deployment again. The Heroku app has been configured to automatically update depending on the latest commit. However, if we were to go through the steps again. We'd have to create an app in our Heroku account and fetch its app name and our account API key. Then create 2 new repository secrets containing those 2 stuff. Lastly, don't forget to rerun the failed deployment. Our app should be accessible now.
+
+#### 9. Create two user accounts and three dummy data using the Task model on each account at Heroku application website.
+
+<img width="877" alt="Screen Shot 2022-09-29 at 10 12 00 AM" src="https://user-images.githubusercontent.com/101589777/192930208-5f058637-0bf9-4593-8a71-fcfd8fa28d47.png">
+
+<img width="545" alt="Screen Shot 2022-09-29 at 10 12 54 AM" src="https://user-images.githubusercontent.com/101589777/192930313-89274240-fa7f-4fba-bc36-af11de794615.png">
+
+<img width="915" alt="Screen Shot 2022-09-29 at 10 13 21 AM" src="https://user-images.githubusercontent.com/101589777/192930353-4164c431-a71f-489f-b2ff-51d10edb6e99.png">
+
+<img width="816" alt="Screen Shot 2022-09-29 at 10 14 32 AM" src="https://user-images.githubusercontent.com/101589777/192930484-44e967d8-422d-4ed3-b0fc-c28d9b5dc098.png">
+
+<img width="590" alt="Screen Shot 2022-09-29 at 10 14 13 AM" src="https://user-images.githubusercontent.com/101589777/192930439-ac16377a-d087-4300-aa91-4cf53acc5093.png">
+
+<img width="821" alt="Screen Shot 2022-09-29 at 10 16 54 AM" src="https://user-images.githubusercontent.com/101589777/192930762-d04c87ea-6ecd-425b-b523-ebb5372be4e1.png">
