@@ -76,7 +76,7 @@
         let modal = document.querySelector("#create_modal")
         let openButton = document.querySelector("#new_task")
         let closeButton = document.querySelector("#close_new_task")
-        let card = data => 
+        let card = (data) => 
         `
             <div>
                 <div id=${data.pk} class="w-80 mx-5 bg-white shadow-2xl rounded-lg overflow-hidden group">
@@ -137,7 +137,7 @@
             $("#task_form").trigger("reset");
         }
 
-        $("#task_form").submit(event => {
+        $("#task_form").submit((event) => {
             event.preventDefault();
             if ($("#title").val() && $("#description").val()) {
                 $.ajax({
@@ -149,11 +149,7 @@
                     modal.classList.remove("flex");
                     modal.classList.add("hidden");
                     reset();
-                    add_task(result)
-                    alert("Succesfully added a task!");
-                },
-                error: error => {
-                    console.log("There is an error:", error);
+                    add_task(result);
                 },
                 });
             } else {
