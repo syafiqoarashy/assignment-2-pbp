@@ -112,18 +112,6 @@
             $("#yourtodolist").append(card(e));
         }
 
-        function show_tasks(){
-            $.get("{% url 'todolist:show_data_json' %}", function(e){
-                $.each(e, function(i, result) {
-                    add_task(result)
-                });
-            });
-        };
-        
-        function reset(){
-            $("#task_form").trigger("reset");
-        }
-
         openButton.addEventListener("click", () =>
         {
             modal.classList.remove("hidden");
@@ -136,6 +124,18 @@
             modal.classList.add("hidden");
             reset();
         });
+
+        function show_tasks(){
+            $.get("{% url 'todolist:show_data_json' %}", function(e){
+                $.each(e, function(i, result) {
+                    add_task(result)
+                });
+            });
+        };
+        
+        function reset(){
+            $("#task_form").trigger("reset");
+        }
 
         $("#task_form").submit(event => {
             event.preventDefault();
