@@ -7,16 +7,19 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
+from django.http import HttpResponse
+from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
-    data_todolist_item = Task.objects.filter(user = request.user)
+    # data_todolist_item = Task.objects.filter(user = request.user)
 
     context = {
-        'list_item' : data_todolist_item,
+        # 'list_item' : data_todolist_item,
         'user' : request.user,
         'last_login': request.COOKIES['last_login'],
     }
@@ -44,8 +47,18 @@ def create_task(request):
         title = request.POST.get('title')
         description = request.POST.get('description')
         if title != "" and description != "":
-            Task.objects.create(user=request.user,title=title, description=description, date=datetime.datetime.today())
-            return redirect('todolist:todolist')
+            data = Task.objects.create(user=request.user, title=title, description=description, date=datetime.datetime.today())
+            return JsonResponse({
+                    "pk": data.id,
+                    "fields": {
+                        "title": data.title,
+                        "description": data.description,
+                        "is_finished": data.is_finished,
+                        "date": data.date,
+                    },
+                },
+                status=200,
+            )
         else:
             messages.info(request, 'Please fill the title/description!')
 
@@ -81,8 +94,14 @@ def login_user(request):
     context = {}
     return render(request, 'login.html', context)
 
+@login_required(login_url='/todolist/login/')
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
+
+@login_required(login_url='/todolist/login/')
+def show_data_json(request):
+    data = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
