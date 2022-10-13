@@ -44,7 +44,7 @@ The process will occur as follows:
 
 (I reused the new task from last assignment)
 
-``
+```
 <div id="create_modal" class="fixed w-full min-h-screen items-center justify-center  z-50 inset-0 hidden">
         <div class="bg-[#F3F5F9] flex rounded-2xl shadow-2xl shadow-blue-500 max-w-3xl p-5 items-center">
             <div class="px-8">
@@ -81,7 +81,7 @@ The process will occur as follows:
             </div>
         </div>
     </div>
-``
+```
 
 6. New Task View Function and Routing
 
